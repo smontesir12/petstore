@@ -1,0 +1,22 @@
+-- 1. Create the database
+CREATE DATABASE IF NOT EXISTS petstore_db;
+
+-- 2. Select the database
+USE petstore_db;
+
+-- 3. Create the users table
+CREATE TABLE IF NOT EXISTS users (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    username VARCHAR(50) NOT NULL UNIQUE,
+    email VARCHAR(100) NOT NULL UNIQUE,
+    password_hash VARCHAR(255) NOT NULL,
+    is_active TINYINT(1) NOT NULL DEFAULT 1,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- 4. Insert sample data for testing
+-- Note: The password_hash corresponds to the password: password123
+INSERT INTO users (username, email, password_hash, is_active) VALUES
+('admin', 'admin@test.com', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2IZhxQK2XpW', 1),
+('user1', 'user1@test.com', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2IZhxQK2XpW', 1),
+('user2', 'user2@test.com', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2IZhxQK2XpW', 0);

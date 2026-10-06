@@ -1,0 +1,50 @@
+Before you begine phase 2
+
+1. Extract petshop-Phase2.zip inside the existing petshop folder.
+2. replace the existing dashboard.php in the root directory and assets/css/styles.css
+3. login to login.php and explore the new dashboard and the working user management.
+
+Phase 2: Product & Inventory Management
+
+1. Phase 2 Overview
+Now that a secure foundation with user management is done, Phase 2 focuses on the core inventory capabilities of the PetStore. We will build a system to manage pet food products, track quantities, set prices, and categorize items. This sets the stage for Phase 3 (Sales & Transactions).
+
+2. Database Requirements (Proposed)
+We will add a new table called products to the existing petstore_db.
+
+Table: products
+Proposed Schema: 
+id (INT, Primary Key, Auto-Increment)
+name (VARCHAR, e.g., "Premium Dog Food 5kg")
+description (TEXT, product details)
+category (VARCHAR, e.g., "Dog Food", "Cat Food", "Accessories", "Toys")
+price (DECIMAL(10,2), e.g., 45.99)
+stock_quantity (INT, current inventory level)
+created_at (TIMESTAMP)
+
+3. Deliverables Breakdown
+
+Deliverable A: Database Extension (Products Table)
+
+Update the petstore_db database by creating the products table.
+Insert sample product data to test with (e.g., Dog food, Cat food, Fish tank accessories).
+Note: We might also consider a categories table in the future, but a simple VARCHAR column is fine for MVP.
+
+Deliverable B: Product CRUD Implementation
+
+Similar to User Management, we will create a secure products/ directory:
+
+products/index.php: Display a list of all products with their current stock and price.
+products/create.php: Form to add new products to the inventory.
+products/edit.php: Form to update product details (e.g., changing price or restocking quantity).
+products/delete.php: Logic to remove discontinued products.
+
+Validation: Ensure prices are numeric and stock quantities are valid integers.
+
+Deliverable C: Dashboard & Navigation Upgrade
+
+Update dashboard.php to include product statistics:
+Total number of products.
+Total inventory value (sum of price * stock_quantity).
+Low stock alerts (e.g., products with less than 5 items in stock).
+Add a "Product Management" link to the dashboard navigation menu.
